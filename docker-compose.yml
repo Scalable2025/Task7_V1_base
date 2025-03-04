@@ -1,0 +1,34 @@
+services:
+
+  app:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    # environment:
+    #   - spring.datasource.shard1.url=jdbc:postgresql://host.docker.internal:5432/db1
+    #   - spring.datasource.shard1.username=postgres
+    #   - spring.datasource.shard1.password=1234
+    #   - spring.datasource.shard1.driver-class-name=org.postgresql.Driver
+    #   - spring.datasource.shard2.url=jdbc:postgresql://host.docker.internal:5433/db2
+    #   - spring.datasource.shard2.username=postgres
+    #   - spring.datasource.shard2.password=1234
+    #   - spring.datasource.shard2.driver-class-name=org.postgresql.Driver
+
+  db1:
+    image: postgres
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 1234
+      POSTGRES_DB: db1
+  db2:
+    image: postgres
+    ports:
+      - "5433:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 1234
+      POSTGRES_DB: db2
