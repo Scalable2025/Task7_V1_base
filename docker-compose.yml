@@ -1,34 +1,32 @@
 services:
 
-  app:
-    build:
-      context: ./
-      dockerfile: Dockerfile
-    ports:
-      - "8080:8080"
-    # environment:
-    #   - spring.datasource.shard1.url=jdbc:postgresql://host.docker.internal:5432/db1
-    #   - spring.datasource.shard1.username=postgres
-    #   - spring.datasource.shard1.password=1234
-    #   - spring.datasource.shard1.driver-class-name=org.postgresql.Driver
-    #   - spring.datasource.shard2.url=jdbc:postgresql://host.docker.internal:5433/db2
-    #   - spring.datasource.shard2.username=postgres
-    #   - spring.datasource.shard2.password=1234
-    #   - spring.datasource.shard2.driver-class-name=org.postgresql.Driver
+  # app:
+  #   build:
+  #     context: ./
+  #     dockerfile: Dockerfile
+  #   ports:
+  #     - "8080:8080"
+  #   environment:
+  #     - spring.datasource.shard1.url=jdbc:postgresql://ziad:5432/49_7049
+  #     - spring.datasource.shard1.username=postgres
+  #     - spring.datasource.shard1.password=1234
+  #     - spring.datasource.shard2.url=jdbc:postgresql://hegazy:5433/49_7049
+  #     - spring.datasource.shard2.username=postgres
+  #     - spring.datasource.shard2.password=1234
 
-  db1:
+  ziad:
     image: postgres
     ports:
       - "5432:5432"
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: 1234
-      POSTGRES_DB: db1
-  db2:
+      POSTGRES_DB: "49_7049"
+  hegazy:
     image: postgres
     ports:
       - "5433:5432"
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: 1234
-      POSTGRES_DB: db2
+      POSTGRES_DB: "49_7049"
